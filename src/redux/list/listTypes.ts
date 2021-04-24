@@ -1,0 +1,1 @@
+export const RESET_LIST_DATA = "RESET_LIST_DATA";

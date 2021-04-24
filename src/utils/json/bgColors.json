@@ -1,0 +1,11 @@
+[
+  { "color": "#0079BF", "description": "blue" },
+  { "color": "#D29034", "description": "orange" },
+  { "color": "#519839", "description": "green" },
+  { "color": "#B04632", "description": "red" },
+  { "color": "#89609E", "description": "purple" },
+  { "color": "#CD5A91", "description": "pink" },
+  { "color": "#4BBF6B", "description": "lime" },
+  { "color": "#00AECC", "description": "sky" },
+  { "color": "#838C91", "description": "grey" }
+]

@@ -1,0 +1,1 @@
+export const RESET_BOARD_DATA = "RESET_BOARD_DATA";

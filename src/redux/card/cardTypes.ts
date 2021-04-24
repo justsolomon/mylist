@@ -1,0 +1,1 @@
+export const RESET_CARD_DATA = "RESET_CARD_DATA";
