@@ -1,6 +1,6 @@
+import React, { useEffect } from "react";
 import { Box, Center } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/spinner";
-import React, { useEffect } from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import BoardContent from "../../components/board/BoardContent";
@@ -32,7 +32,9 @@ function BoardContainer() {
   };
 
   return (
-    <MainLayout bg={loading ? "#fff" : data?.background}>
+    <MainLayout
+      bg={loading ? "#fff" : data?.fullBackground || data?.background}
+    >
       {loading ? (
         <Center mt="4">
           <Spinner />

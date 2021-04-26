@@ -13,4 +13,7 @@ export interface InputProps {
 
   /** Boolean to determine whether to show forgot password link */
   forgotPassword?: boolean;
+
+  /** Boolean to determine if input should be focused initially */
+  focus?: boolean;
 }

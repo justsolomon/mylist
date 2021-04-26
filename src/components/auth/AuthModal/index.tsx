@@ -43,8 +43,8 @@ function AuthModal({
       isOpen
       isCentered
       size={size}
+      autoFocus={false}
       onClose={() => closePageModal(location, history, "/")}
-      scrollBehavior="inside"
     >
       <ModalOverlay />
       <ModalContent>

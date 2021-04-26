@@ -33,7 +33,10 @@ function BackgroundInput({ bg, size, value }: BGInputProps) {
       borderRadius="sm"
       _hover={!checked && { opacity: 0.8 }}
       opacity={checked && 0.7}
-      onClick={() => setFieldValue("background", value)}
+      onClick={() => {
+        setFieldValue("background", bg);
+        setFieldValue("fullBackground", value);
+      }}
     >
       {checked && (
         <Icon color="#fff" boxSize="10px">

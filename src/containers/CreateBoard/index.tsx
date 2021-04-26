@@ -41,7 +41,12 @@ function CreateBoardContainer() {
 
   return (
     <Formik
-      initialValues={{ title: "", private: true, background: "#0079BF" }}
+      initialValues={{
+        title: "",
+        private: true,
+        background: "#0079BF",
+        fullBackground: "#0079BF",
+      }}
       onSubmit={(values) => {
         dispatch(createBoard(values));
       }}

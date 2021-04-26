@@ -51,7 +51,8 @@ function Routes() {
         //set previous location to a general path
         setPrevLocation({
           ...location,
-          pathname: getStorageValue("loggedIn") ? prevPath : "/",
+          // pathname: getStorageValue("loggedIn") ? prevPath : "/",
+          pathname: prevPath,
         });
 
         //set return path in current location state

@@ -14,7 +14,7 @@ interface CardHeaderProps {
 
 function CardHeader({ children, listTitle }: CardHeaderProps) {
   return (
-    <HStack align="flex-start" spacing="1">
+    <HStack align="flex-start" spacing={["1", "3"]} w="100%">
       <Icon mt="6px" boxSize="18px">
         <FontAwesomeIcon icon={faChalkboard} />
       </Icon>

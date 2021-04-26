@@ -12,7 +12,13 @@ function ForgotPasswordForm({ loading, success, error }: FormRequestProps) {
       buttonText="Get reset link"
       successMessage="Email sent"
     >
-      <FormInput id="email" label="Email address" type="email" name="email" />
+      <FormInput
+        id="email"
+        label="Email address"
+        type="email"
+        name="email"
+        focus
+      />
     </FormWrapper>
   );
 }

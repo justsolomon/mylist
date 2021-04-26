@@ -11,7 +11,6 @@ import {
 
 const updateCard = (values: object, id: string) => {
   return (dispatch: Dispatch) => {
-    dispatch(updateCardRequest());
     axios
       .put(`/todo/${id}`, values)
       .then((res) => {

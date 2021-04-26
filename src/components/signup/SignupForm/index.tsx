@@ -25,6 +25,7 @@ function SignupForm({ loading, success, error }: FormRequestProps) {
           label="First Name"
           type="text"
           name="firstName"
+          focus
         />
         <FormInput
           id="lastName"

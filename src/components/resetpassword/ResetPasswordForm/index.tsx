@@ -12,7 +12,7 @@ function ResetPasswordForm({ loading, success, error }: FormRequestProps) {
       buttonText="Reset password"
       successMessage="Password has been reset"
     >
-      <PasswordLayout id="password" label="Password" name="password" />
+      <PasswordLayout id="password" label="Password" name="password" focus />
       <PasswordLayout
         id="confirmPassword"
         label="Confirm Password"

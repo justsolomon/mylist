@@ -11,7 +11,7 @@ export interface TitleProps {
   title: string;
 
   /** To update the title of the board/card */
-  updateTitleValue: any;
+  updateTitleValue: (value: string) => void;
 }
 
 function BoardTitle({ title, updateTitleValue }: TitleProps) {

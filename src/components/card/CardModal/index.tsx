@@ -11,7 +11,9 @@ import { useBreakpointValue } from "@chakra-ui/media-query";
 import CardTitle from "../CardTitle";
 import CardHeader from "../CardHeader";
 import { Spinner } from "@chakra-ui/spinner";
-import { Center } from "@chakra-ui/layout";
+import { Center, HStack, VStack } from "@chakra-ui/layout";
+import CardDescription from "../CardDescription";
+import CardSidebar from "../CardSidebar";
 
 interface CardModalProps {
   /** Loading status of the card */
@@ -50,14 +52,25 @@ function CardModal({ loading, card, updateCardValue }: CardModalProps) {
           <>
             <ModalCloseButton rounded="full" />
             <ModalBody mt="4">
-              <CardHeader listTitle={card.list?.title}>
-                <CardTitle
-                  title={card.title}
-                  updateTitleValue={(value: string) =>
-                    updateCardValue("title", value)
-                  }
-                />
-              </CardHeader>
+              <HStack w="100%">
+                <VStack spacing="4" align="flex-start" w="80%">
+                  <CardHeader listTitle={card.list?.title}>
+                    <CardTitle
+                      title={card.title}
+                      updateTitleValue={(value: string) =>
+                        updateCardValue("title", value)
+                      }
+                    />
+                  </CardHeader>
+                  <CardDescription
+                    description={card.description}
+                    updateDescription={(value: string) =>
+                      updateCardValue("description", value)
+                    }
+                  />
+                </VStack>
+                <CardSidebar />
+              </HStack>
             </ModalBody>
           </>
         )}

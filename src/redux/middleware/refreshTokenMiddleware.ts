@@ -19,7 +19,9 @@ export const refreshTokenRequest = (dispatch: any) => {
     })
     .catch((err) => {
       console.log(getErrorMessage(err));
-      logout();
+
+      if (err === "Network Error") refreshTokenRequest(dispatch);
+      else logout();
     });
 };
 

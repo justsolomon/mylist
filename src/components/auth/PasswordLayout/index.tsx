@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IconButton } from "@chakra-ui/button";
 import {
   FormControl,
@@ -13,8 +13,19 @@ import { Field } from "formik";
 import { InputProps } from "../inputInterface";
 import { Link } from "react-router-dom";
 
-function PasswordLayout({ label, name, id, forgotPassword }: InputProps) {
+function PasswordLayout({
+  label,
+  name,
+  id,
+  forgotPassword,
+  focus,
+}: InputProps) {
   const [hidden, setHidden] = useState(true);
+  const passwordRef = useRef(null);
+
+  useEffect(() => {
+    if (focus) passwordRef.current.focus();
+  }, []);
 
   return (
     <Field name={name}>
@@ -38,7 +49,11 @@ function PasswordLayout({ label, name, id, forgotPassword }: InputProps) {
               <FormLabel>{label}</FormLabel>
             )}
             <InputGroup>
-              <Input {...field} type={hidden ? "password" : "text"} />
+              <Input
+                {...field}
+                type={hidden ? "password" : "text"}
+                ref={passwordRef}
+              />
               <InputRightElement>
                 <IconButton
                   aria-label={hidden ? "Show password" : "Hide password"}

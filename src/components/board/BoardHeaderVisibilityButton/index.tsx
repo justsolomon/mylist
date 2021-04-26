@@ -30,7 +30,6 @@ function BoardHeaderVisibilityButton({ name }: VisibilityProps) {
 }
 
 function arePropsEqual(prevProps: VisibilityProps, nextProps: VisibilityProps) {
-  console.log(prevProps, nextProps);
   return prevProps.name === nextProps.name;
 }
 

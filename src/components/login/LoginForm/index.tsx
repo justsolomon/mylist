@@ -13,7 +13,13 @@ function LoginForm({ loading, success, error }: FormRequestProps) {
       successMessage="Logged in"
       buttonText="Log in"
     >
-      <FormInput id="email" label="Email address" type="email" name="email" />
+      <FormInput
+        id="email"
+        label="Email address"
+        type="email"
+        name="email"
+        focus
+      />
       <PasswordLayout
         id="password"
         label="Password"
