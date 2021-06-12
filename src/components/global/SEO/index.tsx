@@ -29,7 +29,7 @@ function SEO({
     twitterImage: twitterImageUrl
       ? twitterImageUrl
       : "https://res.cloudinary.com/dazqhyrh7/image/upload/f_auto,q_auto:low,w_800,h_418/v1619983877/mylist_landing_hero.jpg",
-    url: `https://mylist.netlify.app${path}`,
+    url: `https://mylist-app.netlify.app${path}`,
     title: `${prefix} | MyList`,
     twitterUsername: "@gbsolomon1",
   };
