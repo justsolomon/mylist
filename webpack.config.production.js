@@ -54,7 +54,15 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new CopyPlugin({
-      patterns: [{ from: "public", to: "dist" }],
+      patterns: [
+        {
+          from: "public",
+          to: "./",
+          globOptions: {
+            ignore: ["**/index.html"],
+          },
+        },
+      ],
     }),
   ],
   optimization: {
