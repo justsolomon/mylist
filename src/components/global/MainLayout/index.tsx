@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/layout";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header";
 
 interface LayoutProps {
@@ -10,8 +10,22 @@ interface LayoutProps {
 }
 
 function MainLayout({ children, bg }: LayoutProps) {
+  const [windowHeight, setWindowHeight] = useState<number>();
+
+  useEffect(() => {
+    const updateWindowHeight = () => setWindowHeight(window.innerHeight);
+    if (window) {
+      window.addEventListener("resize", updateWindowHeight);
+    }
+    return () => window.removeEventListener("resize", updateWindowHeight);
+  }, []);
+
   return (
-    <Box bg={bg && bg} bgSize="cover" h={bg && (window ? window.innerHeight : "100vh")}>
+    <Box
+      bg={bg && bg}
+      bgSize="cover"
+      h={bg && (windowHeight ? windowHeight : "100vh")}
+    >
       <Header hasBackground={bg ? true : false} />
       {children}
     </Box>
