@@ -42,6 +42,7 @@ function AuthModal({
     <Modal
       isOpen
       isCentered
+      scrollBehavior="inside"
       size={size}
       autoFocus={false}
       onClose={() => closePageModal(location, history, "/")}
