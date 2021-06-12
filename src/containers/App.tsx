@@ -13,10 +13,10 @@ import { refreshTokenRequest } from "../redux/middleware/refreshTokenMiddleware"
 
 //lazy load pages
 // const LandingPage = lazy(() => import("../pages/landing"));
-const LoginModal = lazy(() => import("../pages/login"));
-const SignupModal = lazy(() => import("../pages/signup"));
-const ForgotPasswordModal = lazy(() => import("../pages/forgot-password"));
-const ResetPasswordModal = lazy(() => import("../pages/reset-password"));
+// const LoginModal = lazy(() => import("../pages/login"));
+// const SignupModal = lazy(() => import("../pages/signup"));
+// const ForgotPasswordModal = lazy(() => import("../pages/forgot-password"));
+// const ResetPasswordModal = lazy(() => import("../pages/reset-password"));
 
 function App() {
   const { getStorageValue } = useStorage();

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { matchPath, Route, Switch, useLocation } from "react-router";
 import useStorage, { getStorageValue } from "../hooks/useStorage";
 import BoardsPage from "../pages/all-boards";
@@ -13,12 +14,14 @@ import LogoutPage from "../pages/logout";
 import ResetPasswordPage from "../pages/reset-password";
 import SearchPage from "../pages/search";
 import SignupPage from "../pages/signup";
+import { resetAuthReducer } from "../redux/auth/authActions";
 import isPageModal from "../utils/IsPageModal";
 
 function Routes() {
   const location = useLocation();
   const [prevLocation, setPrevLocation] = useState(location);
   const { updateFirstPageValue, checkIfFirstPage } = useStorage();
+  const dispatch = useDispatch();
 
   //update current path if it's a list card modal
   const { pathname } = location;
@@ -63,6 +66,17 @@ function Routes() {
     }
     updateFirstPageValue();
   }, [location]);
+
+  useEffect(() => {
+    //clear auth reducer when page changes
+    const authRoutes = [
+      "/login",
+      "/signup",
+      "/forgot-password",
+      "/reset-password",
+    ];
+    if (authRoutes.includes(location.pathname)) dispatch(resetAuthReducer());
+  }, []);
 
   const isModal = isPageModal(currentPath) && prevLocation !== location;
 
