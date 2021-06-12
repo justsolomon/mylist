@@ -33,6 +33,7 @@ function CardModal({ loading, card, updateCardValue }: CardModalProps) {
   return (
     <Modal
       isOpen
+      scrollBehavior="inside"
       size={size}
       onClose={() => history.push(`/board/${card.boardId}`)}
     >
@@ -59,7 +60,7 @@ function CardModal({ loading, card, updateCardValue }: CardModalProps) {
                 justify="space-between"
               >
                 <VStack spacing="4" align="flex-start" w={["100%", , "77%"]}>
-                  <CardHeader listTitle={card?.list?.title}>
+                  <CardHeader listTitle={card?.listId?.title}>
                     <CardTitle
                       title={card.title}
                       updateTitleValue={(value: string) =>
