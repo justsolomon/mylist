@@ -56,7 +56,7 @@ function BoardContainer() {
       bg={loading ? "#fff" : data?.fullBackground || data?.background}
     >
       <SEO
-        prefix={data.title}
+        prefix={data.title || "Board"}
         path={location.pathname}
         ogImageUrl={`${getImageUrl(data?.background)}&w=1200&h=630`}
         description={`View ${data.title || ""} board on MyList`}

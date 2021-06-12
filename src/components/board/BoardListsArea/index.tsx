@@ -38,8 +38,7 @@ function BoardListsArea({ lists, boardId, boardData }: BoardListsAreaProps) {
   };
 
   const onDragEnd = (result: any) => {
-    console.log(result);
-    const { destination, source, draggableId, type } = result;
+    const { destination, source, type } = result;
 
     if (!destination) return;
 

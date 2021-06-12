@@ -42,9 +42,9 @@ function CardContainer() {
   return (
     <>
       <SEO
-        prefix={data ? `${data.title} on ${data.board.title}` : "Board card"}
+        prefix={data ? `${data.title} on ${data.board?.title}` : "Board card"}
         path={location.pathname}
-        ogImageUrl={`${getImageUrl(data.board.background)}&w=1200&h=630`}
+        ogImageUrl={`${getImageUrl(data.board?.background)}&w=1200&h=630`}
         description={data ? data.description : ""}
       />
       <CardModal
