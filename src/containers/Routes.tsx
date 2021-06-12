@@ -43,6 +43,16 @@ function Routes() {
   }
 
   useEffect(() => {
+    //clear auth reducer when page changes
+    const authRoutes = [
+      "/login",
+      "/signup",
+      "/forgot-password",
+      "/reset-password",
+    ];
+    if (authRoutes.includes(location.pathname)) dispatch(resetAuthReducer());
+
+    //routing logic for modal pages
     if (!isPageModal(currentPath)) {
       setPrevLocation(location);
     } else {
@@ -66,17 +76,6 @@ function Routes() {
     }
     updateFirstPageValue();
   }, [location]);
-
-  useEffect(() => {
-    //clear auth reducer when page changes
-    const authRoutes = [
-      "/login",
-      "/signup",
-      "/forgot-password",
-      "/reset-password",
-    ];
-    if (authRoutes.includes(location.pathname)) dispatch(resetAuthReducer());
-  }, []);
 
   const isModal = isPageModal(currentPath) && prevLocation !== location;
 
