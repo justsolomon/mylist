@@ -5,7 +5,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import Icon from "@chakra-ui/icon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-interface BoardSectionProps {
+export interface BoardSectionProps {
   /** Name of the section */
   name: string;
 

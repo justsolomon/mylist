@@ -73,5 +73,6 @@ module.exports = {
     historyApiFallback: true,
     open: true,
     hot: true,
+    disableHostCheck: true,
   },
 };

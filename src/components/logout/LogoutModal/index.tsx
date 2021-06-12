@@ -1,16 +1,8 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-} from "@chakra-ui/react";
 import closePageModal from "../../../utils/ClosePageModal";
 import { useHistory, useLocation } from "react-router";
 import logout from "../../../utils/Logout";
+import ModalSkeleton from "../../global/ModalSkeleton";
 
 function LogoutModal() {
   const [loading, setLoading] = useState(false);
@@ -20,29 +12,19 @@ function LogoutModal() {
   const closeModal = () => closePageModal(location, history, "/boards");
 
   return (
-    <Modal isOpen onClose={closeModal} size="sm" isCentered>
-      <ModalOverlay />
-
-      <ModalContent textAlign="center" mx={["4", "0"]}>
-        <ModalHeader>Log out of MyList?</ModalHeader>
-        <ModalBody>You can always log back in at any time.</ModalBody>
-        <ModalFooter>
-          <Button onClick={closeModal} mr="4">
-            Cancel
-          </Button>
-          <Button
-            colorScheme="blue"
-            onClick={() => {
-              setLoading(true);
-              logout();
-            }}
-            isLoading={loading}
-          >
-            Log out
-          </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+    <ModalSkeleton
+      isOpen
+      header="Log out of MyList?"
+      warning="You can always log back in at any time."
+      cta="Log out"
+      colorScheme="blue"
+      loading={loading}
+      onClose={closeModal}
+      primaryAction={() => {
+        setLoading(true);
+        logout();
+      }}
+    />
   );
 }
 

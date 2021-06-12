@@ -17,7 +17,7 @@ function BoardHeaderVisibilityMenu({
   );
 
   return (
-    <Menu>
+    <Menu autoSelect={false}>
       <BoardHeaderVisibilityButton name={boardPrivate ? "Private" : "Public"} />
       <MenuList py="3" maxW="300px">
         <MenuItem

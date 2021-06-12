@@ -16,7 +16,7 @@ function BoardCardList({ boards }: CardListProps) {
         ,
         "repeat(4, 1fr)",
       ]}
-      gap="4"
+      gap={["2", , "4"]}
     >
       {boards?.map(({ background, title, _id, starred }, index) => (
         <BoardCard

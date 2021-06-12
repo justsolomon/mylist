@@ -29,7 +29,7 @@ function AllBoardsContainer() {
   return (
     <HStack
       py={["4", , "6", "8"]}
-      px={["4", , "8", "24"]}
+      px={["2", "4", "8", "24"]}
       spacing={["0", , "6"]}
       align="flex-start"
       w="100%"
@@ -42,7 +42,7 @@ function AllBoardsContainer() {
       ) : error === "Network Error" ? (
         <NetworkError retryRequest={() => dispatch(getUser())} />
       ) : (
-        <BoardSectionList allBoards={data.boards} />
+        <BoardSectionList allBoards={data.boards} id={data._id} />
       )}
     </HStack>
   );

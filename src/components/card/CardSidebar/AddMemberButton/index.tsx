@@ -1,11 +1,11 @@
 import React from "react";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import SidebarButtonWrapper from "../SidebarButtonWrapper";
 
 function AddMemberButton() {
   return (
     <SidebarButtonWrapper
-      text="Add members"
+      text="Members"
       icon={faUser}
       onClick={() => console.log("add member")}
     />

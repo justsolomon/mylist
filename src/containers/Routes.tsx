@@ -3,6 +3,7 @@ import { matchPath, Route, Switch, useLocation } from "react-router";
 import useStorage, { getStorageValue } from "../hooks/useStorage";
 import BoardsPage from "../pages/all-boards";
 import BoardPage from "../pages/board";
+import AcceptBoardInvitePage from "../pages/board/accept-invite";
 import CreateBoardPage from "../pages/board/create";
 import CardPage from "../pages/card";
 import ForgotPasswordPage from "../pages/forgot-password";
@@ -51,12 +52,13 @@ function Routes() {
         //set previous location to a general path
         setPrevLocation({
           ...location,
-          // pathname: getStorageValue("loggedIn") ? prevPath : "/",
-          pathname: prevPath,
+          pathname: getStorageValue("loggedIn") ? prevPath : "/",
         });
 
         //set return path in current location state
-        location.state = { returnPath: prevPath };
+        location.state = {
+          returnPath: getStorageValue("loggedIn") ? prevPath : "/",
+        };
       }
     }
     updateFirstPageValue();
@@ -90,6 +92,10 @@ function Routes() {
     <>
       <Switch location={isModal ? prevLocation : location}>
         <Route exact path="/" component={LandingPage} />
+        <Route
+          path="/board/accept-invite/:memberId/:boardId/:boardName/:firstName"
+          component={AcceptBoardInvitePage}
+        />
         <Route path="/board/:id" component={BoardPage} />
         <Route path="/boards" component={BoardsPage} />
       </Switch>

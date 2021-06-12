@@ -2,21 +2,41 @@ import React, { useEffect } from "react";
 import { Box, Center } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/spinner";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import BoardContent from "../../components/board/BoardContent";
 import BoardHeader from "../../components/board/BoardHeader";
 import MainLayout from "../../components/global/MainLayout";
 import { getBoardSuccess } from "../../redux/board/get/getBoardActions";
 import getBoard from "../../redux/board/get/getBoardService";
 import updateBoard from "../../redux/board/update/updateBoardService";
+import { useToast } from "@chakra-ui/toast";
+import errorToast from "../../utils/toast/errorToast";
+import successToast from "../../utils/toast/successToast";
+import SEO from "../../components/global/SEO";
+import getImageUrl from "../../utils/GetImageUrl";
 
 function BoardContainer() {
   const dispatch = useDispatch();
-  const { data, loading } = useSelector(
+  const toast = useToast();
+  const location = useLocation();
+  const { data, loading, error, success, inviteSuccess } = useSelector(
     (state: RootStateOrAny) => state.board.index
   );
-  //@ts-ignore
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
+
+  useEffect(() => {
+    if (error)
+      toast({
+        ...errorToast,
+        description: error,
+      });
+
+    if (inviteSuccess)
+      toast({
+        ...successToast,
+        description: inviteSuccess,
+      });
+  }, [error, success, inviteSuccess]);
 
   useEffect(() => {
     //fetch board only if board id in state doesn't match new id
@@ -35,6 +55,12 @@ function BoardContainer() {
     <MainLayout
       bg={loading ? "#fff" : data?.fullBackground || data?.background}
     >
+      <SEO
+        prefix={data.title}
+        path={location.pathname}
+        ogImageUrl={`${getImageUrl(data?.background)}&w=1200&h=630`}
+        description={`View ${data.title || ""} board on MyList`}
+      />
       {loading ? (
         <Center mt="4">
           <Spinner />
@@ -42,6 +68,8 @@ function BoardContainer() {
       ) : (
         <Box>
           <BoardHeader
+            user={data?.userId}
+            members={data?.members}
             title={data?.title}
             starred={data?.starred}
             updateBoardValue={updateBoardValue}

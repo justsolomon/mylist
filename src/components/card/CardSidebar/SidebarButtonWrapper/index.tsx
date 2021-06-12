@@ -11,11 +11,19 @@ interface SidebarButtonWrapper {
   /** Icon for the button */
   icon: IconProp;
 
+  /** Boolean to determine if its the delete button */
+  deleteButton?: boolean;
+
   /** Callback to run when the button is clicked */
-  onClick: React.MouseEventHandler;
+  onClick?: React.MouseEventHandler;
 }
 
-function SidebarButtonWrapper({ text, icon }: SidebarButtonWrapper) {
+function SidebarButtonWrapper({
+  text,
+  icon,
+  deleteButton,
+  onClick,
+}: SidebarButtonWrapper) {
   return (
     <Button
       leftIcon={
@@ -23,11 +31,19 @@ function SidebarButtonWrapper({ text, icon }: SidebarButtonWrapper) {
           <FontAwesomeIcon icon={icon} />
         </Icon>
       }
-      fontWeight="medium"
+      fontWeight="normal"
       fontSize="sm"
-      isFullWidth
-      bg="rgba(0, 0, 0, .1)"
-      _hover
+      justifyContent="flex-start"
+      size="sm"
+      borderRadius="4px"
+      py="3"
+      w="100%"
+      color={!deleteButton ? "gray.700" : "gray.200"}
+      bg={!deleteButton ? "rgba(0, 0, 0, .05)" : "#cf513d"}
+      _hover={{ bg: !deleteButton ? "rgba(0, 0, 0, .1)" : "#eb5a46" }}
+      _groupHover={{ bg: !deleteButton ? "rgba(0, 0, 0, .1)" : "#eb5a46" }}
+      colorScheme={deleteButton && "red"}
+      onClick={onClick}
     >
       {text}
     </Button>

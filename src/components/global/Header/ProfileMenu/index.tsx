@@ -27,11 +27,11 @@ function ProfileMenu() {
           </VStack>
         </HStack>
         <MenuDivider />
-        <ProfileMenuItem
+        {/* <ProfileMenuItem
           cta="View Profile"
           icon={faUser}
           onClick={() => history.push("/logout")}
-        />
+        /> */}
         <ProfileMenuItem
           onClick={() =>
             history.push("/logout", { returnPath: location.pathname })

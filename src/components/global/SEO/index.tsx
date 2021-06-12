@@ -5,19 +5,32 @@ interface SEOProps {
   /** Prefix of the page name. Usually the name of the path */
   prefix: string;
 
+  /** Pathname of the page */
+  path: string;
+
   /** Meta description of the page */
-  description: string;
+  description?: string;
+  ogImageUrl?: string;
+  twitterImageUrl?: string;
 }
 
 function SEO({
   prefix,
-  description = "Create, edit and share reviews on courses. Check out reviews posted by others and upvote relevant ones.",
+  path,
+  ogImageUrl,
+  twitterImageUrl,
+  description = "Organize your work into blah blah",
 }: SEOProps) {
   const seo = {
     description,
-    image: "/assets/images/og-image.jpeg",
-    url: "https://courserate.netlify.app",
-    title: `${prefix} | CourseRate`,
+    ogImage: ogImageUrl
+      ? ogImageUrl
+      : "https://res.cloudinary.com/dazqhyrh7/image/upload/f_auto,q_auto:low,w_1200,h_630/v1619983877/mylist_landing_hero.jpg",
+    twitterImage: twitterImageUrl
+      ? twitterImageUrl
+      : "https://res.cloudinary.com/dazqhyrh7/image/upload/f_auto,q_auto:low,w_800,h_418/v1619983877/mylist_landing_hero.jpg",
+    url: `https://mylist.netlify.app${path}`,
+    title: `${prefix} | MyList`,
     twitterUsername: "@gbsolomon1",
   };
 
@@ -25,16 +38,16 @@ function SEO({
     <Helmet>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
-      <meta name="image" content={seo.image} />
+      <meta name="image" content={seo.ogImage} />
       <meta property="og:url" content={seo.url} />
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
-      <meta property="og:image" content={seo.image} />
+      <meta property="og:image" content={seo.ogImage} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={seo.twitterUsername} />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
-      <meta name="twitter:image" content={seo.image} />
+      <meta name="twitter:image" content={seo.twitterImage} />
     </Helmet>
   );
 }

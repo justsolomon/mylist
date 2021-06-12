@@ -1,3 +1,4 @@
+import { IBoardMember } from "../../components/board/BoardMember";
 import { RESET_BOARD_DATA } from "./boardTypes";
 import {
   GET_BOARD_FAILURE,
@@ -12,14 +13,18 @@ import {
 import {
   UPDATE_BOARD_FAILURE,
   UPDATE_BOARD_SUCCESS,
+  INVITE_REQUEST,
+  SEND_INVITE_SUCCESS,
 } from "./update/updateBoardTypes";
 
 const initialState = {
   loading: false,
   imagesLoading: false,
   success: false,
+  inviteLoading: false,
+  inviteSuccess: "",
   images: [] as string[],
-  data: {},
+  data: { members: [] as IBoardMember[] },
   error: "",
 };
 
@@ -35,10 +40,16 @@ const boardReducer = (state = initialState, action: any) => {
         ...state,
         imagesLoading: true,
       };
+    case INVITE_REQUEST:
+      return {
+        ...state,
+        inviteLoading: true,
+      };
     case GET_BOARD_SUCCESS:
     case UPDATE_BOARD_SUCCESS:
       return {
         ...state,
+        inviteLoading: false,
         loading: false,
         error: "",
         success: true,
@@ -50,6 +61,13 @@ const boardReducer = (state = initialState, action: any) => {
         imagesLoading: false,
         error: "",
         images: action.payload,
+      };
+    case SEND_INVITE_SUCCESS:
+      return {
+        ...state,
+        inviteLoading: false,
+        error: "",
+        inviteSuccess: action.payload,
       };
     case GET_IMAGES_FAILURE:
     case GET_BOARD_FAILURE:

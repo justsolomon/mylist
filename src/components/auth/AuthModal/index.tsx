@@ -61,7 +61,13 @@ function AuthModal({
                   as={Link}
                   color="blue"
                   ml="1"
-                  to={`/${login ? "signup" : "login"}`}
+                  to={{
+                    pathname: `/${login ? "signup" : "login"}`,
+                    ...(location.state
+                      ? //@ts-ignore
+                        { state: { returnPath: location.state.returnPath } }
+                      : {}),
+                  }}
                 >
                   {login ? "Sign up" : "Log in"}
                 </ChakraLink>

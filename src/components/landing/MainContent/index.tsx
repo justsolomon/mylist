@@ -1,7 +1,7 @@
-import { Text, VStack } from "@chakra-ui/layout";
 import React from "react";
-import AppIcon from "../../global/AppIcon";
+import { Text, VStack } from "@chakra-ui/layout";
 import AuthButtons from "../AuthButtons";
+import { AppIcon } from "../../global/CustomIcons";
 
 function MainContent() {
   return (
@@ -12,7 +12,7 @@ function MainContent() {
       align="flex-start"
       justify="center"
     >
-      <AppIcon height="50px" width="45px" />
+      <AppIcon height="50px" color="blue.500" width="50px" />
       <Text
         fontSize={["3xl", "4xl", , "5xl"]}
         lineHeight={["40px", "50px", , "60px"]}

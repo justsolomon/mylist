@@ -10,7 +10,7 @@ import errorToast from "../../../utils/toast/errorToast";
 import { useHistory } from "react-router";
 import { getUserSuccess } from "../../../redux/user/get/getUserActions";
 
-interface BoardCardProps {
+export interface BoardCardProps {
   /** Background image of the board */
   bg: string;
 

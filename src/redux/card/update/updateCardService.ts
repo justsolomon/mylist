@@ -5,7 +5,6 @@ import { getBoardSuccess } from "../../board/get/getBoardActions";
 import { resetCardData } from "../cardActions";
 import {
   updateCardFailure,
-  updateCardRequest,
   updateCardSuccess,
 } from "./updateCardActions";
 
@@ -36,7 +35,6 @@ export const updateCardPosition = (
   index: number
 ) => {
   return (dispatch: Dispatch) => {
-    dispatch(updateCardRequest());
     axios
       .put(`/todo/${listId}/${todoId}/${index}`)
       .then((res) => {
@@ -57,7 +55,6 @@ export const moveCardToList = (
   index: number
 ) => {
   return (dispatch: Dispatch) => {
-    dispatch(updateCardRequest());
     axios
       .put(`/todo/${oldListId}/${newListId}/${todoId}/${index}`)
       .then((res) => {

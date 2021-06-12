@@ -8,7 +8,12 @@ function SideBar() {
   const location = useLocation();
 
   return (
-    <VStack w="25%" display={["none", , "flex"]}>
+    <VStack
+      w="25%"
+      display={["none", , "flex"]}
+      position="sticky"
+      top={[, , "74px", "82px"]}
+    >
       <SidebarCard
         name="Boards"
         icon={faClipboardList}

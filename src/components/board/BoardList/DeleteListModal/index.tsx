@@ -1,20 +1,10 @@
 import React, { useEffect } from "react";
-import {
-  Button,
-  MenuItem,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  useDisclosure,
-  useToast,
-} from "@chakra-ui/react";
+import { MenuItem, useDisclosure, useToast } from "@chakra-ui/react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { BoardListHeaderProps } from "../BoardListHeader";
 import deleteList from "../../../../redux/list/delete/deleteListService";
 import errorToast from "../../../../utils/toast/errorToast";
+import ModalSkeleton from "../../../global/ModalSkeleton";
 
 function DeleteListModal({ title, id }: BoardListHeaderProps) {
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -40,27 +30,16 @@ function DeleteListModal({ title, id }: BoardListHeaderProps) {
     <>
       <MenuItem onClick={onOpen}>Delete list</MenuItem>
 
-      <Modal isOpen={isOpen} onClose={onClose} size="sm" isCentered>
-        <ModalOverlay />
-        <ModalContent textAlign="center" mx={["4", "0"]}>
-          <ModalHeader>{`Delete list ${title}?`}</ModalHeader>
-          <ModalBody>
-            All the cards in this list will be deleted and cannot be recovered.
-          </ModalBody>
-          <ModalFooter>
-            <Button onClick={onClose} mr="4">
-              Cancel
-            </Button>
-            <Button
-              colorScheme="red"
-              onClick={() => dispatch(deleteList(id))}
-              isLoading={loading}
-            >
-              Delete list
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      <ModalSkeleton
+        isOpen={isOpen}
+        header={`Delete list ${title}?`}
+        warning="All the cards in this list will be deleted and cannot be recovered."
+        cta="Delete list"
+        colorScheme="red"
+        loading={loading}
+        onClose={onClose}
+        primaryAction={() => dispatch(deleteList(id))}
+      />
     </>
   );
 }

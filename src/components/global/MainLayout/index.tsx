@@ -11,7 +11,7 @@ interface LayoutProps {
 
 function MainLayout({ children, bg }: LayoutProps) {
   return (
-    <Box bg={bg && bg} bgSize="cover" h={bg && "100vh"}>
+    <Box bg={bg && bg} bgSize="cover" h={bg && (window ? window.innerHeight : "100vh")}>
       <Header hasBackground={bg ? true : false} />
       {children}
     </Box>

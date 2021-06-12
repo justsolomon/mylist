@@ -17,7 +17,7 @@ function CardTitle({ title, updateTitleValue }: TitleProps) {
       px="1"
       {...TitleDefaultStyles}
       borderRadius="2px"
-      fontSize="xl"
+      fontSize={["19px", "xl"]}
       ref={cardTitleRef}
       _focus={{ ...TitleFocusStyles, bg: "#fff" }}
       onBlur={() => {

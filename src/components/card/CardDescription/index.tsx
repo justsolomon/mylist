@@ -40,7 +40,7 @@ function CardDescription({ description, updateDescription }: DescriptionProps) {
         <FontAwesomeIcon icon={faAlignLeft} />
       </Icon>
 
-      <VStack align="flex-start" w="100%" spacing="3">
+      <VStack align="flex-start" w="100%" spacing={["1", , "3"]}>
         <HStack>
           <Text fontSize="md" fontWeight="bold">
             Description

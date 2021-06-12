@@ -11,7 +11,7 @@ import { useBreakpointValue } from "@chakra-ui/media-query";
 import CardTitle from "../CardTitle";
 import CardHeader from "../CardHeader";
 import { Spinner } from "@chakra-ui/spinner";
-import { Center, HStack, VStack } from "@chakra-ui/layout";
+import { Center, Stack, VStack } from "@chakra-ui/layout";
 import CardDescription from "../CardDescription";
 import CardSidebar from "../CardSidebar";
 
@@ -28,7 +28,7 @@ interface CardModalProps {
 
 function CardModal({ loading, card, updateCardValue }: CardModalProps) {
   const history = useHistory();
-  const size = useBreakpointValue(["xs", "md", "lg", "2xl"]);
+  const size = useBreakpointValue(["xs", "md", "2xl"]);
 
   return (
     <Modal
@@ -38,9 +38,9 @@ function CardModal({ loading, card, updateCardValue }: CardModalProps) {
     >
       <ModalOverlay />
 
-      <ModalContent h="80vh" bg="#EBECF0">
+      <ModalContent minH="80vh" bg="#EBECF0">
         {loading ? (
-          <Center w="100%" h="100%">
+          <Center w="100%" h="80vh">
             <Spinner
               thickness="4px"
               emptyColor="gray.300"
@@ -52,9 +52,14 @@ function CardModal({ loading, card, updateCardValue }: CardModalProps) {
           <>
             <ModalCloseButton rounded="full" />
             <ModalBody mt="4">
-              <HStack w="100%">
-                <VStack spacing="4" align="flex-start" w="80%">
-                  <CardHeader listTitle={card.list?.title}>
+              <Stack
+                direction={["column", , "row"]}
+                w="100%"
+                align="flex-start"
+                justify="space-between"
+              >
+                <VStack spacing="4" align="flex-start" w={["100%", , "77%"]}>
+                  <CardHeader listTitle={card?.list?.title}>
                     <CardTitle
                       title={card.title}
                       updateTitleValue={(value: string) =>
@@ -70,7 +75,7 @@ function CardModal({ loading, card, updateCardValue }: CardModalProps) {
                   />
                 </VStack>
                 <CardSidebar />
-              </HStack>
+              </Stack>
             </ModalBody>
           </>
         )}

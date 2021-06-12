@@ -5,12 +5,13 @@ import SignupForm from "../../components/signup/SignupForm";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import signupUser from "../../redux/auth/signup/signupService";
 import useStorage from "../../hooks/useStorage";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 
 function SignupContainer() {
   const dispatch = useDispatch();
   const { updateAuthStatus } = useStorage();
   const history = useHistory();
+  const location = useLocation();
   const { loading, success, error, data } = useSelector(
     (state: RootStateOrAny) => state.auth
   );
@@ -19,8 +20,11 @@ function SignupContainer() {
     if (success) {
       updateAuthStatus(true, data);
 
-      //redirect to boards page
-      setTimeout(() => history.push("/boards"), 1000);
+      //redirect to boards page or return path if specified
+      let redirectUrl = "/boards";
+      //@ts-ignore
+      if (location.state) redirectUrl = location.state.returnPath;
+      setTimeout(() => history.push(redirectUrl), 1000);
     }
   }, [success]);
 

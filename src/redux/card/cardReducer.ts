@@ -14,9 +14,16 @@ import {
   GET_CARD_REQUEST,
   GET_CARD_SUCCESS,
 } from "./get/getCardTypes";
+import {
+  DELETE_CARD_FAILURE,
+  DELETE_CARD_REQUEST,
+  DELETE_CARD_SUCCESS,
+} from "./delete/deleteCardTypes";
 
 const initialState = {
   loading: false,
+  deleteLoading: false,
+  deleteSuccess: false,
   success: false,
   data: {},
   error: "",
@@ -30,6 +37,11 @@ const cardReducer = (state = initialState, action: any) => {
       return {
         ...state,
         loading: true,
+      };
+    case DELETE_CARD_REQUEST:
+      return {
+        ...state,
+        deleteLoading: true,
       };
     case CREATE_CARD_SUCCESS:
       return {
@@ -45,9 +57,17 @@ const cardReducer = (state = initialState, action: any) => {
         success: true,
         data: action.payload,
       };
+    case DELETE_CARD_SUCCESS:
+      return {
+        ...state,
+        error: "",
+        deleteLoading: false,
+        deleteSuccess: true,
+      };
     case CREATE_CARD_FAILURE:
     case GET_CARD_FAILURE:
     case UPDATE_CARD_FAILURE:
+    case DELETE_CARD_FAILURE:
       return {
         ...initialState,
         error: action.payload,

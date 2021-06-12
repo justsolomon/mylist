@@ -4,6 +4,7 @@ import HeroImage from "../components/landing/HeroImage";
 import MainContent from "../components/landing/MainContent";
 import useStorage from "../hooks/useStorage";
 import { useHistory } from "react-router";
+import SEO from "../components/global/SEO";
 
 function LandingPage() {
   const { getStorageValue } = useStorage();
@@ -20,6 +21,7 @@ function LandingPage() {
       spacing="0"
       ml={["0", , "-20"]}
     >
+      <SEO prefix="Home" path="/" />
       <HeroImage />
       <MainContent />
     </Stack>

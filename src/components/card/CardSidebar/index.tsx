@@ -1,23 +1,31 @@
 import React from "react";
-import { VStack } from "@chakra-ui/layout";
+import { Box, VStack } from "@chakra-ui/layout";
 import CardSidebarSection from "./CardSidebarSection";
 import AddMemberButton from "./AddMemberButton";
 import MoveCardButton from "./MoveCardButton";
-import ShareCardButton from "./ShareCardButton";
-import DeleteCardButton from "./DeleteCardButton";
+import ShareCardMenu from "./ShareCardMenu";
+import DeleteCardModal from "./DeleteCardModal";
 
 function CardSidebar() {
   return (
-    <VStack align="flex-start" w="20%" mt="10">
-      <CardSidebarSection header="ADD TO CARD">
-        <AddMemberButton />
-      </CardSidebarSection>
-      <CardSidebarSection header="ACTIONS">
-        <MoveCardButton />
-        <ShareCardButton />
-        <DeleteCardButton />
-      </CardSidebarSection>
-    </VStack>
+    <Box position="relative" w={["100%", , "20%"]}>
+      <VStack
+        align="flex-start"
+        position="absolute"
+        spacing="3"
+        w="100%"
+        top={["4", , "16"]}
+      >
+        <CardSidebarSection header="ADD TO CARD">
+          <AddMemberButton />
+        </CardSidebarSection>
+        <CardSidebarSection header="ACTIONS">
+          <MoveCardButton />
+          <ShareCardMenu />
+          <DeleteCardModal />
+        </CardSidebarSection>
+      </VStack>
+    </Box>
   );
 }
 
