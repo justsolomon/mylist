@@ -3,7 +3,7 @@ import store from "../../redux/store";
 
 // Creates a base instance for all axios based request
 const instance = axios.create({
-  baseURL: `http://localhost:5000`,
+  baseURL: `https://mylist-api.vercel.app`,
   withCredentials: true,
 });
 
