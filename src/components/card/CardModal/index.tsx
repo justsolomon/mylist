@@ -35,7 +35,7 @@ function CardModal({ loading, card, updateCardValue }: CardModalProps) {
       isOpen
       scrollBehavior="inside"
       size={size}
-      onClose={() => history.push(`/board/${card.boardId}`)}
+      onClose={() => history.push(`/board/${card.boardId._id}`)}
     >
       <ModalOverlay />
 

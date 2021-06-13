@@ -67,7 +67,7 @@ function BoardContainer() {
           <Spinner />
         </Center>
       ) : (
-        <Box>
+        <Box w="100%">
           <BoardHeader
             user={data?.userId}
             members={data?.members}
