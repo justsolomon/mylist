@@ -39,7 +39,7 @@ function CardModal({ loading, card, updateCardValue }: CardModalProps) {
     >
       <ModalOverlay />
 
-      <ModalContent minH="80vh" bg="#EBECF0">
+      <ModalContent minH="80vh" bg="#EBECF0" overflowX="hidden">
         {loading ? (
           <Center w="100%" h="80vh">
             <Spinner
