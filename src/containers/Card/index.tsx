@@ -45,6 +45,7 @@ function CardContainer() {
         prefix={data ? `${data.title} on ${data.boardId?.title}` : "Board card"}
         path={location.pathname}
         ogImageUrl={`${getImageUrl(data.boardId?.background)}&w=1200&h=630`}
+        twitterImageUrl={`${getImageUrl(data?.background)}&w=1200&h=630`}
         description={data ? data.description : ""}
       />
       <CardModal

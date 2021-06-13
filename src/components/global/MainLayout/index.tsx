@@ -24,6 +24,7 @@ function MainLayout({ children, bg }: LayoutProps) {
     <Box
       bg={bg && bg}
       bgSize="cover"
+      overflowX="hidden"
       h={bg && (windowHeight ? windowHeight : "100vh")}
     >
       <Header hasBackground={bg ? true : false} />

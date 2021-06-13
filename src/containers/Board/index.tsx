@@ -59,6 +59,7 @@ function BoardContainer() {
         prefix={data.title || "Board"}
         path={location.pathname}
         ogImageUrl={`${getImageUrl(data?.background)}&w=1200&h=630`}
+        twitterImageUrl={`${getImageUrl(data?.background)}&w=1200&h=630`}
         description={`View ${data.title || ""} board on MyList`}
       />
       {loading ? (
