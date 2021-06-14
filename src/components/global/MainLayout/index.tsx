@@ -14,10 +14,12 @@ function MainLayout({ children, bg }: LayoutProps) {
 
   useEffect(() => {
     const updateWindowHeight = () => setWindowHeight(window.innerHeight);
-    if (window) {
-      window.addEventListener("resize", updateWindowHeight);
-    }
-    return () => window.removeEventListener("resize", updateWindowHeight);
+
+    updateWindowHeight();
+
+    // window.addEventListener("resize", updateWindowHeight);
+
+    // return () => window.removeEventListener("resize", updateWindowHeight);
   }, []);
 
   return (
@@ -25,7 +27,8 @@ function MainLayout({ children, bg }: LayoutProps) {
       bg={bg && bg}
       bgSize="cover"
       overflowX="hidden"
-      h={bg && (windowHeight ? windowHeight : "100vh")}
+      overflowY={bg ? "hidden" : "auto"}
+      h={bg ? (windowHeight ? windowHeight : "100vh") : "100vh"}
     >
       <Header hasBackground={bg ? true : false} />
       {children}
