@@ -7,7 +7,10 @@ function HomeButton() {
   const history = useHistory();
 
   return (
-    <HeaderButtonWrapper icon={faHome} onClick={() => history.push("/")} />
+    <HeaderButtonWrapper
+      icon={faHome}
+      onClick={() => history.push("/boards")}
+    />
   );
 }
 

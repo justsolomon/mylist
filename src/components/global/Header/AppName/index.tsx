@@ -3,13 +3,13 @@ import { HStack, Text } from "@chakra-ui/layout";
 import { Link } from "react-router-dom";
 import { AppIcon } from "../../CustomIcons";
 
-function AppName() {
+function AppName({ isLoggedIn }: { isLoggedIn: boolean }) {
   return (
     <HStack
       as={Link}
       align="center"
       color="gray.300"
-      to="/"
+      to={isLoggedIn ? "/boards" : "/"}
       spacing="1"
       _hover={{ color: "gray.100" }}
     >

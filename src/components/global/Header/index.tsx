@@ -30,7 +30,7 @@ function Header({ hasBackground }: HeaderProps) {
       px={["2", "4"]}
     >
       <HStack w="75%">
-        <HStack w={["55%", "60%"]} d={!isLoggedIn && ["none", "flex"]}>
+        <HStack w={["53%", "60%"]} d={!isLoggedIn && ["none", "flex"]}>
           <HomeButton />
           {isLoggedIn ? (
             <>
@@ -39,7 +39,7 @@ function Header({ hasBackground }: HeaderProps) {
             </>
           ) : null}
         </HStack>
-        <AppName />
+        <AppName isLoggedIn={isLoggedIn} />
       </HStack>
       <HStack>
         {isLoggedIn ? (

@@ -20,7 +20,7 @@ function MainLayout({ children, bg }: LayoutProps) {
     // window.addEventListener("resize", updateWindowHeight);
 
     // return () => window.removeEventListener("resize", updateWindowHeight);
-  }, []);
+  }, []); 
 
   return (
     <Box
