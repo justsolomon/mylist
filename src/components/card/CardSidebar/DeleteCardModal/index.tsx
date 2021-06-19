@@ -23,7 +23,7 @@ function DeleteCardModal() {
 
   useEffect(() => {
     //close modal on success
-    if (success) history.push(`/board/${data.boardId}`);
+    if (success) history.push(`/board/${data.boardId._id}`);
 
     if (error) {
       toast({
