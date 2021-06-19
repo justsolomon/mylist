@@ -19,7 +19,7 @@ function SEO({
   path,
   ogImageUrl,
   twitterImageUrl,
-  description = "Organize your work into blah blah",
+  description = "Organize your work into simple lists",
 }: SEOProps) {
   const seo = {
     description,
