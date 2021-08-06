@@ -1,5 +1,5 @@
 # mylist
-A mini trello clone. Try it out [here](https://mylist-app.netlify.app)
+A task management application. Try it out [here](https://mylist-app.netlify.app)
 
 
 ## Demo
