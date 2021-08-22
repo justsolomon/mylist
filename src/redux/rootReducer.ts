@@ -6,6 +6,7 @@ import searchUsersReducer from "./search/users/searchUsersReducer";
 import listReducer from "./list/listReducer";
 import cardReducer from "./card/cardReducer";
 import createBoardReducer from "./board/create/createBoardReducer";
+import searchReducer from "./search/searchReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -13,7 +14,7 @@ const rootReducer = combineReducers({
   board: combineReducers({ index: boardReducer, create: createBoardReducer }),
   list: listReducer,
   card: cardReducer,
-  search: combineReducers({ users: searchUsersReducer }),
+  search: combineReducers({ index: searchReducer, users: searchUsersReducer }),
 });
 
 export default rootReducer;

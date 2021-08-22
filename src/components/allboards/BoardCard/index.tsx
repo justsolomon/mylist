@@ -22,6 +22,8 @@ export interface BoardCardProps {
 
   /** Id of the board */
   id: string;
+
+  starBoard?: () => void;
 }
 
 function BoardCard({ bg, title, starred, id }: BoardCardProps) {
