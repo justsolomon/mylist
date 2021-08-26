@@ -5,27 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { BoardCardProps } from "../../../../allboards/BoardCard";
 import { useHistory } from "react-router";
-import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
-import { getUserSuccess } from "../../../../../redux/user/get/getUserActions";
-import updateBoard from "../../../../../redux/board/update/updateBoardService";
 
-function SearchBoardCard({ bg, title, starred, id }: BoardCardProps) {
+function SearchBoardCard({
+  bg,
+  title,
+  starred,
+  id,
+  starBoard,
+}: BoardCardProps) {
   const history = useHistory();
-  const dispatch = useDispatch();
-  const { data } = useSelector((state: RootStateOrAny) => state.user);
-  const { boards } = data;
-
-  const starBoard = () => {
-    //update on client side
-    let boardIndex = boards.findIndex((board: any) => board._id === id);
-    boards[boardIndex].starred = !starred;
-
-    let updatedUser = { ...data, boards };
-    dispatch(getUserSuccess(updatedUser));
-
-    //update on server
-    dispatch(updateBoard({ starred: !starred }, id));
-  };
 
   return (
     <HStack

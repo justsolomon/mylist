@@ -17,6 +17,14 @@ interface VisibilityOptionProps extends VisibilityProps {
   selected: boolean;
 }
 
+export function VisibilityIcon({ isPrivate }: { isPrivate: boolean }) {
+  return (
+    <Icon boxSize="12px" color={isPrivate ? "red.500" : "green.500"}>
+      <FontAwesomeIcon icon={isPrivate ? faLock : faGlobeAfrica} />
+    </Icon>
+  );
+}
+
 function VisibilityOption({
   name,
   description,
@@ -25,12 +33,7 @@ function VisibilityOption({
   return (
     <VStack align="flex-start" spacing="0">
       <HStack spacing="3" align="center">
-        <Icon
-          boxSize="12px"
-          color={name === "Private" ? "red.500" : "green.500"}
-        >
-          <FontAwesomeIcon icon={name === "Private" ? faLock : faGlobeAfrica} />
-        </Icon>
+        <VisibilityIcon isPrivate={name === "Private"} />
         <Text fontSize="15px">{name}</Text>
         {selected && (
           <Icon boxSize="12px">

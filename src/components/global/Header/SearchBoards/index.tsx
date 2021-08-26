@@ -19,6 +19,8 @@ import SearchBoardInput from "./SearchBoardInput";
 import { CloseButton } from "@chakra-ui/close-button";
 import { useLocation } from "react-router";
 import getUser from "../../../../redux/user/get/getUserService";
+import updateBoard from "../../../../redux/board/update/updateBoardService";
+import { getUserSuccess } from "../../../../redux/user/get/getUserActions";
 
 function SearchBoards() {
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -26,6 +28,19 @@ function SearchBoards() {
   const [searchResults, setSearchResults] = useState(null);
   const location = useLocation();
   const dispatch = useDispatch();
+
+  const starBoard = (id: string, starred: boolean) => {
+    //update on client side
+    const { boards } = data;
+    let boardIndex = boards.findIndex((board: any) => board._id === id);
+    boards[boardIndex].starred = !starred;
+
+    let updatedUser = { ...data, boards };
+    dispatch(getUserSuccess(updatedUser));
+
+    //update on server
+    dispatch(updateBoard({ starred: !starred }, id));
+  };
 
   useEffect(() => {
     //only fetch user if data isn't available in state
@@ -62,7 +77,10 @@ function SearchBoards() {
           <ModalBody px="3">
             {searchResults !== null ? (
               searchResults.length ? (
-                <SearchBoardResults boards={searchResults} />
+                <SearchBoardResults
+                  boards={searchResults}
+                  starBoard={starBoard}
+                />
               ) : (
                 <Text align="center">No boards found</Text>
               )

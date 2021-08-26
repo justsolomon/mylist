@@ -1,12 +1,12 @@
 import React from "react";
 import SEO from "../components/global/SEO";
-import SearchModal from "../components/search/SearchModal";
+import SearchContainer from "../containers/Search";
 
 function SearchPage() {
   return (
     <>
       <SEO prefix="Search" path="/search" />
-      <SearchModal />
+      <SearchContainer />
     </>
   );
 }

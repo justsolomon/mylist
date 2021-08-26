@@ -72,6 +72,12 @@ function Routes() {
         location.state = {
           returnPath: getStorageValue("loggedIn") ? prevPath : "/",
         };
+      } else if (currentPath === "/card") {
+        //set previous path to board page if modal is a list card
+        setPrevLocation({
+          ...location,
+          pathname: getStorageValue("loggedIn") ? `/board/${boardId}` : "/",
+        });
       }
     }
     updateFirstPageValue();
