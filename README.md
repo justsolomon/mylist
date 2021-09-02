@@ -12,13 +12,13 @@ A task management application. Try it out [here](https://mylist-app.netlify.app)
 - Drag and drop lists to reorder them on a board
 - Drag and drop cards in between lists
 - Invite other users to boards
+- Search for cards and boards
 
 ## Coming Soon
 - Add labels to cards
 - Add attachments(images, videos, etc.) to card descriptions
 - Assign cards to board members
 - Support markdown in card descriptions
-- Search functionality
 - Update and delete boards
 
 ## Getting Started
