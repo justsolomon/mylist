@@ -3,7 +3,7 @@ import store from "../../redux/store";
 
 // Creates a base instance for all axios based request
 const instance = axios.create({
-  baseURL: `https://mylist-app.herokuapp.com`,
+  baseURL: `https://mylist-api.netlify.app/.netlify/functions/server`,
   withCredentials: true,
 });
 
