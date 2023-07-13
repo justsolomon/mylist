@@ -1,5 +1,5 @@
 # mylist
-A task management application. Try it out [here](https://mylist-app.netlify.app)
+A task management application. Try it out [here](https://mylist-app.netlify.app).
 
 
 ## Demo
@@ -16,7 +16,7 @@ A task management application. Try it out [here](https://mylist-app.netlify.app)
 
 ## Coming Soon
 - Add labels to cards
-- Add attachments(images, videos, etc.) to card descriptions
+- Add attachments(images, videos, etc) to card descriptions
 - Assign cards to board members
 - Support markdown in card descriptions
 - Update and delete boards
